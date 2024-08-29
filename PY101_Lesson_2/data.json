@@ -1,0 +1,11 @@
+{
+    "start" : "Welcome to Calculator!",
+    "first_number" : "What's the first number?",
+    "invalid_number" : "Hmm... that doesn't look like a valid number",
+    "second_number" : "What's the second number?",
+    "operation_prompt" : "What operation would you like to perform? 1) Add 2) Subtract 3) Multiply 4) Divide",
+    "invalid_prompt" : "You must choose 1, 2, 3, or 4",
+    "continue_request" : "Do you want to perform another calculation? y/n",
+    "end" : "Session ended. Goodbye!",
+    "y_or_n" : "You must respond y or n."
+}

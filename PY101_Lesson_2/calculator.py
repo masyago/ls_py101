@@ -1,4 +1,11 @@
-# Ask user if they want to perfrorm another calculation
+#JSON configuration file set up
+import json
+
+with open('data.json', 'r') as file: # Open the JSON file for reading
+    data = json.load(file)
+    
+
+
 
 def prompt(message):
     print(f"==> {message}")
@@ -12,30 +19,30 @@ def invalid_number(number_str):
     return False
 
 
-prompt('Welcome to Calculator!')
+prompt(data["start"]) # Accessing message by key
+
 
 def calc_main():
-    prompt("What's the first number?")
+    prompt(data["first_number"])
     number1 = input()
 
 
     while invalid_number(number1):
-        prompt("Hmm... that doesn't look like a valid number.")
+        prompt(data["invalid_number"])
         number1 = input()
     
-    prompt("What's the second number?")
+    prompt(data["second_number"])
     number2 = input()
     
     while invalid_number(number2):
-        prompt("Hmm... that doesn't look like a valid number.")
+        prompt(data["invalid_number"])
         number2 = input()
     
-    prompt("""What operation would you like to perform?
-        1) Add 2) Subtract 3) Multiply 4) Divide""")
+    prompt(data["operation_prompt"])
     operation = input()
     
     while operation not in ["1", "2", "3", "4"]:
-        prompt('You must choose 1, 2, 3, or 4')
+        prompt(data["invalid_prompt"])
         operation = input()
     
     
@@ -52,16 +59,16 @@ def calc_main():
     print(f'The result is {output}.')
 
     def calc_continue():
-        print("Do you want to perform another calculation? y/n ")
+        print(data["continue_request"])
         response = input()
         match response:
             case "y":
                 calc_main()
             case "n":
-                print("Session ended. Goodbye!")
+                print(data["end"])
                 exit()
             case _:
-                print("You must respond y or n.")
+                print(data["y_or_n"])
                 calc_continue()
                 
     calc_continue()
