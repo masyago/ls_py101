@@ -1,0 +1,14 @@
+{
+    "greeting" : "\n\nWelcome to the mortgage calculator!\nLet's calculate your monthly payment.\n",
+    "loan_header" : "\nLOAN DETAILS",
+    "loan_amount" : "What is the loan amount in USD?",
+    "invalid_loan_amount" : "Error: The loan amount should be a positive number. Please try again.",
+    "invalid_apr" : "Error: APR should be a non-negative number. Please try again.",
+    "invalid_duration" : "Error: The loan term should be a positive number. Please try again.",
+    "apr" : "What is the APR (Annual Percentage Rate) in %?",
+    "loan_term" : "What is the loan term in years?",
+    "result_header" : "\n======== RESULT ======== ",
+    "continue_request" : "\nDo you want to calculate monthly payment for another loan? Y/N",
+    "end" : "\nSession ended. Goodbye!",
+    "y_or_n" : "\nYou should respond Y or N."
+}
