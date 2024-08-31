@@ -70,7 +70,7 @@ def calc_main():
         get_apr = input()
     apr_clean = get_apr.replace('%', '')
 
-     # Get loan duration and check if number is valid
+    # Get loan duration and check if number is valid
     prompt(messages["loan_term"])
     get_duration_years = input()
     while validate_duration(get_duration_years):
@@ -86,7 +86,7 @@ def calc_main():
     duration_months = duration_years * 12
     monthly_interest_rate = apr / 12 / 100
 
-    # Calculate montly payment and print out summary
+    # Calculate montly payment and print out loan summary
     if monthly_interest_rate == 0:
         monthly_payment = loan_amount / duration_months
     else:
@@ -102,6 +102,7 @@ def calc_main():
           f'\nMONTHLY PAYMENT: ${rounded_monthly_payment:,}\n'
           f'========================')
 
+    # Ask user if they want to calculate payments for another loan
     def calc_continue():
         print(messages["continue_request"])
         response = input()
