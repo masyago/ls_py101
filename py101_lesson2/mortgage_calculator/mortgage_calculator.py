@@ -105,7 +105,8 @@ def calc_main():
     def calc_continue():
         print(messages["continue_request"])
         response = input()
-        match response.lower():
+        response_clean = response.lower().strip()
+        match response_clean:
             case "y":
                 calc_main()
             case "n":
