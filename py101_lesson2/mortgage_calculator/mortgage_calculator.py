@@ -6,7 +6,7 @@ import json
 from os import system
 
 with open('messages.json', 'r') as file:
-     messages = json.load(file)
+    messages = json.load(file)
 
 def prompt(message):
     print(f'\n==> {message}')
@@ -18,12 +18,11 @@ def validate_loan_input(number_str):
             number = float(number_str_clean)
             if number > 0:
                 break
-            else:
-                return True
+            return True
         except ValueError:
             return True
-    return False   
-    
+    return False
+
 def validate_apr_input(number_str):
     number_str_clean = number_str.replace('%','')
     while True:
@@ -31,32 +30,30 @@ def validate_apr_input(number_str):
             number = float(number_str_clean)
             if number >= 0:
                 break
-            else:
-                return True
+            return True
         except ValueError:
             return True
-    return False  
-    
+    return False
+
 def validate_duration(number_str):
     while True:
         try:
             number = float(number_str)
             if number > 0:
                 break
-            else:
-                return True
+            return True
         except ValueError:
             return True
-    return False  
-    
+    return False
+
 # Clear screen
-system('clear')          
+system('clear')
 
 print(messages["greeting"])
 
 def calc_main():
     print(messages["loan_header"])
-    
+
     # Get loan amount and check if number is valid
     prompt(messages["loan_amount"])
     get_loan_amount = input()
@@ -64,7 +61,7 @@ def calc_main():
         prompt(messages["invalid_loan_amount"])
         get_loan_amount = input()
     loan_amount_clean = get_loan_amount.replace(',', '').replace('$', '')
-    
+
     # Get APR and check if number is valid
     prompt(messages["apr"])
     get_apr = input()
@@ -72,23 +69,23 @@ def calc_main():
         prompt(messages["invalid_apr"])
         get_apr = input()
     apr_clean = get_apr.replace('%', '')
-        
+
      # Get loan duration and check if number is valid
-    prompt(messages["loan_term"])                    
+    prompt(messages["loan_term"])
     get_duration_years = input()
     while validate_duration(get_duration_years):
         prompt(messages["invalid_duration"])
         get_duration_years = input()
-    
+
     # Convert inputs to floats
     loan_amount = float(loan_amount_clean)
     apr = float(apr_clean)
     duration_years = float(get_duration_years)
-    
-    # Calculate values for monthly_payment formula 
+
+    # Calculate values for monthly_payment formula
     duration_months = duration_years * 12
     monthly_interest_rate = apr / 12 / 100
-   
+
     # Calculate montly payment and print out summary
     if monthly_interest_rate == 0:
         monthly_payment = loan_amount / duration_months
@@ -104,7 +101,7 @@ def calc_main():
           f'Loan term: {duration_years} years\n'
           f'\nMONTHLY PAYMENT: ${rounded_monthly_payment:,}\n'
           f'========================')
-    
+
     def calc_continue():
         print(messages["continue_request"])
         response = input()
@@ -117,9 +114,7 @@ def calc_main():
             case _:
                 print(messages["y_or_n"])
                 calc_continue()
-                
+
     calc_continue()
 
-    
 calc_main()
-
