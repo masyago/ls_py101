@@ -19,7 +19,6 @@ def display_loan_header():
     print(messages["loan_header"])
     
 def prompt_loan_amount():
-    global loan_amount
     prompt(messages["loan_amount"])
     get_loan_amount = input()
     
@@ -32,7 +31,6 @@ def prompt_loan_amount():
     return loan_amount
     
 def prompt_apr():
-    global apr
     prompt(messages["apr"])
     get_apr = input()
     while valid_apr_input(get_apr):
@@ -43,7 +41,6 @@ def prompt_apr():
     return apr
     
 def prompt_duration_years():
-    global duration_years
     prompt(messages["loan_term"])
     get_duration_years = input()
     while valid_duration(get_duration_years):
@@ -88,17 +85,14 @@ def valid_duration(number_str):
     return False
     
 def calc_duration_months(duration_years):
-    global duration_months
     duration_months = duration_years * 12
     return duration_months
     
 def calc_monthly_interest_rate(apr):
-    global monthly_interest_rate
     monthly_interest_rate = apr / 12 / 100
     return monthly_interest_rate
 
 def calc_monthly_payment(monthly_interest_rate, loan_amount, duration_months):
-    global monthly_payment
     if monthly_interest_rate == 0:
         monthly_payment = loan_amount / duration_months
     else:
@@ -134,7 +128,7 @@ def display_summary(loan_amount, apr, duration_years, monthly_payment):
 # Clear screen
 system('clear')
 
-
+# Main 
 def calc_main():
     display_welcome_message()
     display_loan_header()
@@ -143,11 +137,12 @@ def calc_main():
     loan_amount = prompt_loan_amount()
     apr = prompt_apr()
     duration_years = prompt_duration_years()
-
-    calc_duration_months(duration_years)
-    calc_monthly_interest_rate(apr)
-
-    calc_monthly_payment(monthly_interest_rate, loan_amount, duration_months)
+    
+    
+    # Calculate monthly payment and values needed for the formula
+    duration_months = calc_duration_months(duration_years)
+    monthly_interest_rate = calc_monthly_interest_rate(apr)
+    monthly_payment = calc_monthly_payment(monthly_interest_rate, loan_amount, duration_months)
 
     display_summary(loan_amount, apr, duration_years, monthly_payment)
     
