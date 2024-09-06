@@ -4,6 +4,7 @@ Mortgage calculator that calculates monthly payments.
 
 import json
 from os import system
+import sys
 
 with open('messages.json', 'r') as file:
     messages = json.load(file)
@@ -112,7 +113,7 @@ def calc_main():
                 calc_main()
             case "n":
                 print(messages["end"])
-                exit()
+                sys.exit(0)
             case _:
                 print(messages["y_or_n"])
                 calc_continue()
