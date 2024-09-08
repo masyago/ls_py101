@@ -1,0 +1,9 @@
+{"welcome" : "\nWelcome to Rock, Paper, Scissors, Spock, Lizard game!",
+ "not_valid" : "That's not a valid choice. Please try again",
+ "player_won_round" : "     *** You won this round! ***",
+ "computer_won_round" : "     *** Computer won this round! ***",
+ "tie" : "     *** It's a tie *** ",
+ "player_won_game" : "***** YOU WONE THE GAME! *****",
+ "computer_won_game" : "***** COMPUTER WONE THE GAME! *****",
+ "play_again" : "Do you want to play again?"
+}
