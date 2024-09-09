@@ -43,7 +43,9 @@ def choice_options():
     return valid_choices
     
 def display_choice_options():
-    prompt(f'Choose one: {choice_options()}')
+    prompt(f'Choose one: {choice_options()}.\n'
+           f'    You can type either a word or a corresponding letter')
+    
     
 def clean_input(user_choice):
     user_choice = user_choice.strip()
