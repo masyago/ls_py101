@@ -62,26 +62,30 @@ def match_word():
 def display_choices():
     print(f'\n   You chose {user_choice_word}, computer chose {computer_choice}')
 
-def display_winner(player, computer):
+def is_winner(player, computer):
     if (((player == 'rock') and (computer in ('scissors', 'lizard'))) or
        ((player == 'paper') and (computer in ('rock', 'Spock'))) or
        ((player == 'scissors') and (computer in ('paper', 'lizard'))) or
        ((player == 'Spock') and (computer in ('scissors', 'rock'))) or
        ((player == 'lizard') and (computer in ('paper', 'Spock')))):
-        winner = 'player'
-        print(messages["player_won_round"])
+        return 'player'
     elif (((player == 'rock') and (computer in ('paper', 'Spock'))) or
          ((player == 'paper') and (computer in ('scissors', 'lizard'))) or
          ((player == 'scissors') and (computer in ('Spock', 'rock'))) or
          ((player == 'Spock') and (computer in ('lizard', 'paper'))) or
          ((player == 'lizard') and (computer in ('rock', 'scissors')))):
-        winner = 'computer'
-        print(messages["computer_won_round"])
+        return 'computer'
     else:
-        winner = 'nobody'
-        print(messages["tie"])
+        return 'nobody'
 
-    return winner
+def display_winner(winner):
+    match winner:
+        case 'player':
+            print(messages["player_won_round"])
+        case 'computer':
+            print(messages["computer_won_round"])
+        case 'nobody':
+            print(messages["tie"])
 
 def count_score():
     if winner == 'player':
@@ -134,7 +138,8 @@ while True:
         computer_choice = random.choice(VALID_WORDS)
 
         display_choices()
-        winner = display_winner(user_choice_word, computer_choice)
+        winner = is_winner(user_choice_word, computer_choice)
+        display_winner(winner)
         display_score()
 
         if (score['player'] != 3) and (score['computer'] != 3):
